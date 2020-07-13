@@ -16,6 +16,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -117,6 +118,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapClick(LatLng latLng) {
+        Toast.makeText(this, "Map Clicked", Toast.LENGTH_SHORT);
         if (mapMarkers.size() <= 4) {
             title = "";
             snippet = "";
@@ -319,7 +321,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (Marker marker : mapMarkers) {
                     if (isDisplayingA || isDisplayingB || isDisplayingC || isDisplayingD) {
                         if (Math.abs(marker.getPosition().latitude - latLng.latitude) < 0.05 && Math.abs(marker.getPosition().longitude - latLng.longitude) < 0.05) {
-                            if (marker.getTag().equals("A")) {
+                            if (marker.getTag()!=null && marker.getTag().equals("A")) {
                                 if (polyLines.size() > 0) {
                                     polyLines.get(0).remove();
                                     if (ABDistance != null) {
@@ -334,7 +336,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 }
                                 marker.remove();
                                 isDisplayingA = false;
-                            } else if (marker.getTag().equals("B")) {
+                            } else if( marker.getTag()!=null&& marker.getTag().equals("B")) {
                                 if (polyLines.size() > 0) {
                                     polyLines.get(0).remove();
                                     if (ABDistance != null) {
@@ -349,7 +351,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 }
                                 marker.remove();
                                 isDisplayingB = false;
-                            } else if (marker.getTag().equals("C")) {
+                            } else if (marker.getTag()!=null&& marker.getTag().equals("C")) {
                                 if (polyLines.size() > 1) {
                                     polyLines.get(1).remove();
                                     if (BCDistance != null) {
@@ -364,7 +366,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 }
                                 marker.remove();
                                 isDisplayingC = false;
-                            } else if (marker.getTag().equals("D")) {
+                            } else if (marker.getTag()!=null&& marker.getTag().equals("D")) {
                                 if (polyLines.size() > 2) {
                                     polyLines.get(2).remove();
                                     if (CDDistance != null) {
@@ -428,7 +430,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         final TextView textView = new TextView(this);
-
 
         String textDistance = distanceText;
 
