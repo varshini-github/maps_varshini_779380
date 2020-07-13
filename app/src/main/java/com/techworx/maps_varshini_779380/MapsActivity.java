@@ -11,6 +11,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -39,12 +40,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleMap.OnPolygonClickListener {
 
     private GoogleMap mMap;
-    String title, snippet;
-    ArrayList<Marker> mapMarkers;
-    ArrayList<Polyline> polyLines;
-    Polygon polygon;
+    private String title, snippet;
+    private ArrayList<Marker> mapMarkers;
+    private ArrayList<Polyline> polyLines;
+    private Polygon polygon;
     boolean isDisplayingA, isDisplayingB, isDisplayingC, isDisplayingD, isDisplayingPolygon;
-    Marker polygonDistance, ABDistance, BCDistance, CDDistance, DADistance;
+    private Marker polygonDistance, ABDistance, BCDistance, CDDistance, DADistance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         isDisplayingPolygon = false;
 
 
-        LatLng canada = new LatLng(45.424721, -75.695000);
+        LatLng canada = new LatLng(50.0000, -85.0000);
         CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
                 canada, 8);
         mMap.animateCamera(location);
@@ -454,7 +455,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     .icon(BitmapDescriptorFactory.fromBitmap(bmpText)));
 
         }
-
     }
 
     @Override
@@ -528,6 +528,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         int totalPoints = latLngList.size();
         return new LatLng(centroid[0] / totalPoints, centroid[1] / totalPoints);
     }
-
-
 }
