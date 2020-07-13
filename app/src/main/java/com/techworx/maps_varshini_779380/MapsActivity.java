@@ -61,10 +61,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mapMarkers = new ArrayList<>();
         polyLines = new ArrayList<>();
-        isDisplayingA = false;
-        isDisplayingB = false;
-        isDisplayingC = false;
         isDisplayingD = false;
+        isDisplayingC = false;
+        isDisplayingB = false;
+        isDisplayingA = false;
         isDisplayingPolygon = false;
 
 
